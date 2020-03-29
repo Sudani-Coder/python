@@ -1,4 +1,5 @@
 # Python Object Oriented Programming
+import datetime
 
 class Employee:
 
@@ -27,6 +28,13 @@ class Employee:
     def from_string(cls, emp_str):
         first, last, salary = emp_str.split("-")
         return cls(first, last, salary)
+
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        else:
+            return True
 
 
 print(Employee.num_of_emps)
@@ -69,3 +77,6 @@ new_emp_2 = Employee.from_string(emp_str_2)
 
 print(new_emp_2.email)
 print(new_emp_2.salary)
+
+my_date = datetime.date.today()
+print(Employee.is_workday(my_date))
