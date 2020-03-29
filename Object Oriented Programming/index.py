@@ -18,6 +18,16 @@ class Employee:
 
     def apply_raise(self):
         self.salary = int(self.salary * self.raise_amount)
+    
+    @classmethod
+    def set_raise_amount(cls, amount):
+        cls.raise_amount = amount
+
+    @classmethod
+    def from_string(cls, emp_str):
+        first, last, salary = emp_str.split("-")
+        return cls(first, last, salary)
+
 
 print(Employee.num_of_emps)
 
@@ -43,3 +53,19 @@ print(emp_2.salary)
 
 print(emp_1.__dict__)
 print(Employee.__dict__)
+
+Employee.set_raise_amount(1.06)
+print(emp_1.raise_amount)
+print(emp_2.raise_amount)
+
+emp_1.apply_raise()
+print(emp_1.salary)
+
+emp_str_1 = "Sudani-Coder-91850"
+emp_str_2 = "John-Doe-75500"
+emp_str_3 = "Omer-Taha-83500"
+
+new_emp_2 = Employee.from_string(emp_str_2)
+
+print(new_emp_2.email)
+print(new_emp_2.salary)
