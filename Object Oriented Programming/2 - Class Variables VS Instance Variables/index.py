@@ -3,7 +3,7 @@
 class Employee:
 
     num_of_emps = 0 # Class Variable
-    raise_amount = 1.04 # Class Variable
+    raise_amount = 1.02 # Class Variable
 
     def __init__(self, FirstName, LastName, salary):
         self.FirstName = FirstName
@@ -19,27 +19,44 @@ class Employee:
     def apply_raise(self):
         self.salary = int(self.salary * self.raise_amount)
 
-print(Employee.num_of_emps)
+print("\n {}".format(Employee.__dict__))
 
-emp_1 = Employee("sudani", "coder", 100000000)
+print("\n Number of employee's {}.".format(Employee.num_of_emps))
 
-print(Employee.num_of_emps)
+emp_1 = Employee("John", "Doe", 2500)
 
-emp_2 = Employee("Test", "User", 10000)
+print("\n Number of employee's {}.".format(Employee.num_of_emps))
 
-print(Employee.num_of_emps)
+print("\n {}".format(emp_1.FullName()))
+print("\n {}".format(emp_1.email))
+print("\n {}".format(emp_1.salary))
 
-print(emp_1.email)
-print(emp_1.FullName())
-print(emp_1.salary)
+print("\n {}".format(emp_1.__dict__))
 
-emp_1.apply_raise()
-print(emp_1.salary)
+emp_2 = Employee("Test", "User", 5000)
 
-print(Employee.FullName(emp_2))
-print(emp_2.salary)
-Employee.apply_raise(emp_2)
-print(emp_2.salary)
+print("\n Number of employee's {}.".format(Employee.num_of_emps))
 
-print(emp_1.__dict__)
-print(Employee.__dict__)
+print("\n {}".format(Employee.FullName(emp_2)))
+print("\n {}".format(emp_2.email))
+print("\n {}".format(emp_2.salary))
+
+emp_2.apply_raise()
+print("\n {}".format(emp_2.salary))
+
+print("\n {}".format(emp_2.__dict__))
+
+emp_3 = Employee("Null", "None", 10000)
+
+print("\n Number of employee's {}.".format(Employee.num_of_emps))
+
+print("\n {}".format(Employee.FullName(emp_3)))
+print("\n {}".format(emp_3.email))
+print("\n {}".format(emp_3.salary))
+
+Employee.apply_raise(emp_3)
+print("\n {}".format(emp_3.salary))
+
+print("\n {}".format(emp_3.__dict__))
+
+print("\n {}".format(Employee.__dict__))

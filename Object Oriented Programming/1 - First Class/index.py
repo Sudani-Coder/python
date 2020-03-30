@@ -11,7 +11,14 @@ class Employee:
     def FullName(self):
         return "{} {}".format(self.FirstName, self.LastName)
 
-emp_1 = Employee("sudani", "coder", 100000000)
-emp_2 = Employee("Test", "User", 10000)
+print("\n {}".format(Employee.__dict__))
 
-print(emp_1.FullName())
+emp_1 = Employee("John", "Doe", 2500)
+
+print("\n {}".format(emp_1.FullName()))
+print("\n {}".format(emp_1.email))
+print("\n {}".format(emp_1.salary))
+
+print("\n {}".format(emp_1.__dict__))
+
+print("\n {}".format(Employee.__dict__))

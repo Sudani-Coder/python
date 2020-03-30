@@ -4,13 +4,13 @@ import datetime
 class Employee:
 
     num_of_emps = 0 # Class Variable
-    raise_amount = 1.04 # Class Variable
+    raise_amount = 1.02 # Class Variable
 
     def __init__(self, FirstName, LastName, salary):
         self.FirstName = FirstName
         self.LastName = LastName
-        self.salary = salary
-        self.email = FirstName + "." + LastName + "@company.com"
+        self.salary = int(salary)
+        self.email = FirstName + "." + LastName + "@email.com"
 
         Employee.num_of_emps += 1 # Class Variable
 
@@ -36,47 +36,20 @@ class Employee:
         else:
             return True
 
+class Developer(Employee):
+    def __init__(self, FirstName, LastName, salary, prog_lang):
+        super().__init__(FirstName, LastName, salary)
+        self.prog_lang = prog_lang
 
-print(Employee.num_of_emps)
+dev_1 = Developer("Sudani", "Coder", 25000, ["HTML", "CSS", "JS", "PY", "SQL"])
 
-emp_1 = Employee("sudani", "coder", 100000000)
+print("\n Number of employee's {}.".format(Employee.num_of_emps))
 
-print(Employee.num_of_emps)
+print("\n {}".format(dev_1.FullName()))
+print("\n {}".format(dev_1.email))
+print("\n {}".format(dev_1.salary))
+print("\n {}".format(dev_1.prog_lang))
 
-emp_2 = Employee("Test", "User", 10000)
+Developer.set_raise_amount(1.10)
 
-print(Employee.num_of_emps)
-
-print(emp_1.email)
-print(emp_1.FullName())
-print(emp_1.salary)
-
-emp_1.apply_raise()
-print(emp_1.salary)
-
-print(Employee.FullName(emp_2))
-print(emp_2.salary)
-Employee.apply_raise(emp_2)
-print(emp_2.salary)
-
-print(emp_1.__dict__)
-print(Employee.__dict__)
-
-Employee.set_raise_amount(1.06)
-print(emp_1.raise_amount)
-print(emp_2.raise_amount)
-
-emp_1.apply_raise()
-print(emp_1.salary)
-
-emp_str_1 = "Sudani-Coder-91850"
-emp_str_2 = "John-Doe-75500"
-emp_str_3 = "Omer-Taha-83500"
-
-new_emp_2 = Employee.from_string(emp_str_2)
-
-print(new_emp_2.email)
-print(new_emp_2.salary)
-
-my_date = datetime.date.today()
-print(Employee.is_workday(my_date))
+print("\n {}".format(Employee.__dict__))
