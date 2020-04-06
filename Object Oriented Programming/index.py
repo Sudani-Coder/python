@@ -10,12 +10,28 @@ class Employee:
         self.FirstName = FirstName
         self.LastName = LastName
         self.salary = int(salary)
-        self.email = FirstName + "." + LastName + "@email.com"
 
         Employee.num_of_emps += 1 # Class Variable
 
+    @property
+    def email(self):
+        return "{}.{}@email.com".format(self.FirstName, self.LastName)
+
+    @property
     def FullName(self):
         return "{} {}".format(self.FirstName, self.LastName)
+
+    @FullName.setter
+    def FullName(self, name):
+        FirstName, LastName = name.split(" ")
+        self.FirstName = FirstName
+        self.LastName = LastName
+
+    @FullName.deleter
+    def FullName(self):
+        print("Delete Name!")
+        self.FirstName = None
+        self.LastName = None
 
     def apply_raise(self):
         self.salary = int(self.salary * self.raise_amount)
@@ -35,6 +51,18 @@ class Employee:
             return False
         else:
             return True
+
+    def __repr__(self):
+        return "Employee('{}', '{}', '{}')".format(self.FirstName, self.LastName, self.salary)
+
+    def __str__(self):
+        return "{} - {}".format(self.FullName(), self.email)
+
+    def __add__(self, other):
+        return self.salary + other.salary
+    
+    def __len__(self):
+        return len(self.FullName())
 
 class Developer(Employee):
 
