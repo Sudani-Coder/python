@@ -12,12 +12,14 @@ keys = {
 }
 
 message = input("Enter the message: ").upper()
-encrypted = ""
 
-for letters in message:
-    if letters in keys:
-        encrypted += keys[letters]
-    else:
-        encrypted += letters
+def cipher(key , msg):
+    encrypted = ""
+    for letters in message:
+        if letters in keys:
+            encrypted += keys[letters]
+        else:
+            encrypted += letters
+    return encrypted
 
-print(encrypted.lower())
+print(cipher(keys, message))
